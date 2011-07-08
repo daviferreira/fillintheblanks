@@ -1,79 +1,74 @@
 <!doctype html>
 <html>
-	<head>
-		<title>_____ in the blanks</title>
-		<meta charset="utf-8" />
-		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js"></script>
-    	<link rel="stylesheet" href="_css/reset.css" />
-    	<link rel="stylesheet" href="_css/styles.css" />
-	</head>
-	<body>
-		<h1>_____ in the blanks</h1>
-		<form id="form-fill" method="POST" action="index.php">
+  <head>
+  <title>_____ in the blanks</title>
+  <meta charset="utf-8" />
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.0/jquery.min.js"></script>
+  <link rel="stylesheet" href="_css/reset.css" />
+  <link rel="stylesheet" href="_css/styles.css" />
+  </head>
+  <body>
+    <h1>_____ in the blanks</h1>
+    <form id="form-fill" method="POST" action="index.php">
 
-			<div class="col">
-				<label for="original">Texto original</label>
-				<textarea name="original" id="original" rows="10"></textarea>
-			</div>
+      <div class="col">
+        <label for="original">Texto original</label>
+        <textarea name="original" id="original" rows="10"></textarea>
+      </div>
 
-			<div class="col-2"><input type="submit" value="Converter >>>" /></div>
+      <div class="col-2">
+        <input type="submit" value="Converter >>>" />
+      </div>
 
-			<div class="col">
-				<label for="lacuna">Texto com lacunas</label>
-				<textarea name="lacuna" id="lacuna" rows="10"></textarea>
-			</div>
+      <div class="col">
+        <label for="lacuna">Texto com lacunas</label>
+        <textarea name="lacuna" id="lacuna" rows="10"></textarea>
+      </div>
 
-		</form>
+    </form>
 
-		<script>
-		$(function(){
-			$('#form-fill').submit(function(e){
-				var original = $('#original').val();
-				if( !original )
-				{
-					$('#original')
-							.addClass('error')
-							.focus();
-				}
-				else
-				{
-					var tmp = original.split(/\n/);
-					var tmp2 = '';
-					var lacuna = '';
-					var num = 0;
-					var len = 0;
-					var final = '';
-					for( x in tmp )
-					{
-						tmp2 		= tmp[x].split(/ /);
-						if( tmp2.length > 1 )
-						{
-							num 		= Math.floor( Math.random() * ( tmp2.length - 1 ) );
-							len 		= tmp2[num].length;
-							lacuna = '';
-							len *= 2;
-							for( var i = 1; i <= len; i++ )
-							{
-								lacuna += '_';
-							}
-							tmp2[num] = lacuna;
-							for( y in tmp2 )
-							{
-								final += tmp2[y] + ' ';
-							}
-							final += "\n";
-						}
-					}
-				}
-				$('#lacuna').val( final );
-				e.preventDefault();
-			});
+    <script>
+    $(function(){
+      
+      $('#form-fill').submit(function(e){
+        var original = $('#original').val();
+        if(!original)
+          $('#original').addClass('error').focus();
+        else{
+          var tmp = original.split(/\n/);
+          var tmp2 = '';
+          var lacuna = '';
+          var num = 0;
+          var len = 0;
+          var final = '';
+          for(x in tmp){
+            tmp2 = tmp[x].split(/ /);
+            if(tmp2.length > 1){
+              num = Math.floor(Math.random()*(tmp2.length-1));
+              len = tmp2[num].length;
+              lacuna = '';
+              len *= 2;
+              
+              for(var i = 1; i <= len; i++)
+                lacuna += '_';
+              
+              tmp2[num] = lacuna;
 
-			$('#lacuna').bind('focus', function(){
-				$(this).select();	
-			});
-		});
-		</script>
+              for( y in tmp2 )
+                final += tmp2[y] + ' ';
 
-	</body>
+              final += "\n";
+            }
+          }
+        }
+        $('#lacuna').val( final );
+        e.preventDefault();
+      });
+
+      $('#lacuna').bind('focus', function(){
+        $(this).select(); 
+        });
+    });
+    </script>
+  </body>
 </html>
