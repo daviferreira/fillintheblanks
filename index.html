@@ -10,26 +10,20 @@
   <body>
     <h1>_____ in the blanks</h1>
     <form id="form-fill" method="POST" action="index.php">
-
       <div class="col">
         <label for="original">Texto original</label>
         <textarea name="original" id="original" rows="10"></textarea>
       </div>
-
       <div class="col-2">
         <input type="submit" value="Converter >>>" />
       </div>
-
       <div class="col">
         <label for="lacuna">Texto com lacunas</label>
         <textarea name="lacuna" id="lacuna" rows="10"></textarea>
       </div>
-
     </form>
-
     <script>
     $(function(){
-      
       $('#form-fill').submit(function(e){
         var original = $('#original').val();
         if(!original)
