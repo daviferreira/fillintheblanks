@@ -48,20 +48,20 @@
               
               tmp2[num] = lacuna;
 
-              for( y in tmp2 )
+              for(y in tmp2)
                 final += tmp2[y] + ' ';
 
               final += "\n";
             }
           }
         }
-        $('#lacuna').val( final );
+        $('#lacuna').val(final);
         e.preventDefault();
       });
 
       $('#lacuna').bind('focus', function(){
         $(this).select(); 
-        });
+      });
     });
     </script>
   </body>
