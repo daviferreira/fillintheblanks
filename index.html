@@ -29,27 +29,27 @@
         if(!original)
           $('#original').addClass('error').focus();
         else{
-          var tmp = original.split(/\n/);
-          var tmp2 = '';
+          var linhas = original.split(/\n/);
+          var palavras = '';
           var lacuna = '';
           var num = 0;
           var len = 0;
           var final = '';
-          for(x in tmp){
-            tmp2 = tmp[x].split(/ /);
-            if(tmp2.length > 1){
-              num = Math.floor(Math.random()*(tmp2.length-1));
-              len = tmp2[num].length;
+          for(x in linhas){
+            palavras = linhas[x].split(/ /);
+            if(palavras.length > 1){
+              num = Math.floor(Math.random()*(palavras.length-1));
+              len = palavras[num].length;
               lacuna = '';
               len *= 2;
               
               for(var i = 1; i <= len; i++)
                 lacuna += '_';
               
-              tmp2[num] = lacuna;
+              palavras[num] = lacuna;
 
-              for(y in tmp2)
-                final += tmp2[y] + ' ';
+              for(y in palavras)
+                final += palavras[y] + ' ';
 
               final += "\n";
             }
