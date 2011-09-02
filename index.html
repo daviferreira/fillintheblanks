@@ -20,37 +20,6 @@
       <h1><span>fill</span> in the blanks <small>jQuery plutin to generate fill in the blanks exercises</small></h1>
     </div>
 
-    <div class="row">
-      <div class="span4 columns">
-        <h2>Options</h2>
-        <p>Use this form to change the plugin options on the fly.</p>
-      </div>
-      <div class="span12 columns">
-        <form class="options" action="index.html" method="post">
-          <div class="clearfix">
-            <label for="size">Size</label>
-            <div class="input">
-              <input type="text" id="size" class="small" value="1" />
-            </div>
-          </div>
-          <div class="clearfix">
-            <label for="blanks_by_line">Blanks by line</label>
-            <div class="input">
-              <input type="text" id="blanks_by_line" class="small" value="1" />
-            </div>
-          </div>
-          <div class="clearfix">
-            <label for="symbol">Symbol</label>
-            <div class="input">
-              <input type="text" id="symbol" class="small" value="_" />
-            </div>
-          </div>
-        </form>
-      </div>
-    </div>
-
-    <hr />
-
     <form id="frm-fill" action="index.html" method="POST">
       <div class="row">
         <div class="span6">
@@ -66,7 +35,35 @@
         </div>
       </div> 
     </form>
+
+    <div class="page-header">
+      <h2>Options <small>Use this form to change the plugin options on the fly.</small></h2>
+    </div>
+    <div class="row">
+      <form class="options" action="index.html" method="post">
+        <div class="span4">
+          <label for="size">Size</label>
+          <div class="input">
+            <input type="text" id="size" class="small" value="1" />
+          </div>
+        </div>
+        <div class="span4">
+          <label for="blanks_by_line">Blanks by line</label>
+          <div class="input">
+            <input type="text" id="blanks_by_line" class="small" value="1" />
+          </div>
+        </div>
+        <div class="span4">
+          <label for="symbol">Symbol</label>
+          <div class="input">
+            <input type="text" id="symbol" class="small" value="_" />
+          </div>
+        </div>
+      </form>
+    </div>
+
     <hr />
+
     <div class="row">
       <div class="span4 columns">
         <h2>Usage</h2>
@@ -82,6 +79,10 @@
 });</pre> 
       </div>
     </div>
+    
+    <hr />
+    
+    <p style="text-align:right;">Developed with &hearts; by <a href="http://www.daviferreira.com">Davi Ferreira</a> using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap</a> and, of course, <a href="http://jquery.com">jQuery</a>.</p>
     
   </div>
 
