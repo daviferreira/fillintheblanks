@@ -9,8 +9,8 @@
       original: 'original',
       result: 'result',
       ignore: ['the', 'in', 'on', 'as'],
-      minimum_word_size: 2,
-      maximum_word_size: -1
+      min_size: 2,
+      max_size: -1
     };
 
     var options = $.extend(defaults, options || {});
@@ -25,7 +25,7 @@
       return false;
     };
 
-    var select_words = function(words){
+    var _select_words = function(words){
       var words_to_convert = []; 
       var blanked_words = [];
       var word, len;
@@ -41,7 +41,7 @@
       return words_to_convert;
     };
 
-    var convert_words = function(words, words_to_convert){
+    var _convert_words = function(words, words_to_convert){
       for(w in words_to_convert){
         var matches = words[words_to_convert[w][0]].match(/[\.!\?,]$/g);
         words[words_to_convert[w][0]] = '';
@@ -55,7 +55,7 @@
       return words;
     };
 
-    var generate_line = function(line, words){
+    var _generate_line = function(line, words){
       var new_line = '';
       if(i > 0) new_line += "\n";
       for(w in words) new_line += words[w] + " ";
@@ -71,9 +71,9 @@
         for(i in lines){
           var words = lines[i].split(/ /);
           if(words.length > 0){
-            var words_to_convert = select_words(words);
-            words = convert_words(words, words_to_convert);
-            result += generate_line(i, words);
+            var words_to_convert = _select_words(words);
+            words = _convert_words(words, words_to_convert);
+            result += _generate_line(i, words);
           }
         }
 
