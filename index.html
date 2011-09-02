@@ -4,7 +4,8 @@
   <meta charset="UTF-8" />
   <title>___ in the blanks | jQuery plugin to generate fill in the blanks exercises</title>
   <meta description="This is a jQuery plugin to generate fill in the blanks exercises. It converts the original text to text with blank spaces to fill." />
-  <link rel="stylesheet" href="http://twitter.github.com/bootstrap/assets/css/bootstrap-1.1.1.min.css"> 
+  <link rel="stylesheet" href="http://twitter.github.com/bootstrap/assets/css/bootstrap-1.1.1.min.css" /> 
+  <link rel="stylesheet" href="css/prettify.css" /> 
   <style>
   textarea{ width: 340px!important; }
   </style>
@@ -17,6 +18,7 @@
     <div class="page-header">
       <h1>____ in the blanks <small>jQuery plutin to generate fill in the blanks exercises</small></h1>
     </div>
+    
     <form id="frm-fill" action="index.html" method="POST">
       <div class="row">
         <div class="span6">
@@ -24,7 +26,7 @@
           <textarea id="original" name="original" class="xlarge" rows="20" placeholder="Paste your text here."></textarea>
         </div>
         <div class="span4" style="text-align:center;">
-          <input type="submit" class="btn primary" value="Generate >>>" style="margin:200px 0 0;" />
+          <button type="submit" class="btn primary" style="margin:200px 0 0;">Generate &raquo;</button><br /><button type="button" class="btn secondary" id="btn-clear" style="margin:20px 0 0;">Clear</button>
         </div>
         <div class="span6">
           <h2>Result text</h2>
@@ -32,13 +34,36 @@
         </div>
       </div> 
     </form>
+    <hr />
+    <div class="row">
+      <div class="span4 columns">
+        <h2>Usage</h2>
+        <p><strong>jquery.fillintheblanks</strong> is a plugin to be used on form elements with two textareas &mdash; one with the original text and one with the result text.</p>
+      </div>
+      <div class="span12 columns">
+        <h3>Sample code</h3>
+        <p>The code below will create a fill in the blanks generator using the form "frm-fill". The symbol used for the blanks will be an empty space; the size will be 3 times the word length; and there will be 2 blanks by line.</p>
+<pre class="prettyprint linenums">$('#frm-fill').fillintheblanks({
+  size: 3,
+  symbol: ' ',
+  blanks_by_line: 2
+});</pre> 
+      </div>
+    </div>
+    
   </div>
 
   <script src="http://code.jquery.com/jquery-1.6.2.min.js"></script> 
   <script src="js/jquery.fillintheblanks.js"></script>
+  <script src="js/prettify.js"></script>
   <script>
     $(function(){
+      prettyPrint();
       $('#frm-fill').fillintheblanks();
+      $('#btn-clear').click(function(e){
+        $('#result').val('');
+        e.preventDefault();
+      });
     });
   </script>
 
