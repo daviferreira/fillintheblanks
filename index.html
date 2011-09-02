@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="css/prettify.css" /> 
   <style>
   textarea{ width: 340px!important; }
+  h1 span{ font-family: "Georgia", "Times New Roman", serif; color:#666; font-style:oblique; font-weight:300; border-bottom:1px solid #ccc; }
   </style>
 </head>
 <body>
@@ -16,9 +17,40 @@
 
   <div class="container">
     <div class="page-header">
-      <h1>____ in the blanks <small>jQuery plutin to generate fill in the blanks exercises</small></h1>
+      <h1><span>fill</span> in the blanks <small>jQuery plutin to generate fill in the blanks exercises</small></h1>
     </div>
-    
+
+    <div class="row">
+      <div class="span4 columns">
+        <h2>Options</h2>
+        <p>Use this form to change the plugin options on the fly.</p>
+      </div>
+      <div class="span12 columns">
+        <form class="options" action="index.html" method="post">
+          <div class="clearfix">
+            <label for="size">Size</label>
+            <div class="input">
+              <input type="text" id="size" class="small" value="1" />
+            </div>
+          </div>
+          <div class="clearfix">
+            <label for="blanks_by_line">Blanks by line</label>
+            <div class="input">
+              <input type="text" id="blanks_by_line" class="small" value="1" />
+            </div>
+          </div>
+          <div class="clearfix">
+            <label for="symbol">Symbol</label>
+            <div class="input">
+              <input type="text" id="symbol" class="small" value="_" />
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <hr />
+
     <form id="frm-fill" action="index.html" method="POST">
       <div class="row">
         <div class="span6">
@@ -59,12 +91,24 @@
   <script>
     $(function(){
       prettyPrint();
-      $('#frm-fill').fillintheblanks();
+      initiate_fill();
       $('#btn-clear').click(function(e){
         $('#result').val('');
         e.preventDefault();
       });
+      $('.options input:text').keyup(function(){
+        initiate_fill();
+      });
     });
+
+    function initiate_fill(){
+      $('#frm-fill').unbind('submit');
+      $('#frm-fill').fillintheblanks({
+        size: $('#size').val(),
+        symbol: $('#symbol').val(),
+        blanks_by_line: $('#blanks_by_line').val()
+      });
+    }
   </script>
 
 </body>
