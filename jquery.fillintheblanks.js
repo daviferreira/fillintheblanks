@@ -55,6 +55,13 @@
       return words;
     };
 
+    var generate_line = function(line, words){
+      var new_line = '';
+      if(i > 0) new_line += "\n";
+      for(w in words) new_line += words[w] + " ";
+      return new_line.replace(/ $/, "");   
+    };
+
     return this.each(function(){
       $(this).submit(function(e){
         var original = $(this).find('textarea[name="'+options.original+'"]').val();
@@ -66,9 +73,7 @@
           if(words.length > 0){
             var words_to_convert = select_words(words);
             words = convert_words(words, words_to_convert);
-            if(i > 0) result += "\n";
-            for(w in words) result += words[w] + " ";
-            result = result.replace(/ $/, "");
+            result += generate_line(i, words);
           }
         }
 
