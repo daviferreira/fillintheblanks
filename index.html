@@ -1,1 +1,45 @@
-My GitHub Page
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>___ in the blanks | jQuery plugin to generate fill in the blanks exercises</title>
+  <link rel="stylesheet" href="http://twitter.github.com/bootstrap/assets/css/bootstrap-1.1.1.min.css"> 
+  <style>
+  textarea{ width: 340px!important; }
+  </style>
+</head>
+<body>
+
+  <a href="http://github.com/daviferreira/fillintheblanks"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://a248.e.akamai.net/assets.github.com/img/abad93f42020b733148435e2cd92ce15c542d320/687474703a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f677265656e5f3030373230302e706e67" alt="Fork me on GitHub"></a>
+
+  <div class="container">
+    <div class="page-header">
+      <h1>____ in the blanks <small>jQuery plutin to generate fill in the blanks exercises</small></h1>
+    </div>
+    <form id="frm-fill" action="index.html" method="POST">
+      <div class="row">
+        <div class="span6">
+          <h2>Original text</h2>
+          <textarea id="original" name="original" class="xlarge" rows="20"></textarea>
+        </div>
+        <div class="span4" style="text-align:center;">
+          <input type="submit" class="btn primary" value="Generate >>>" style="margin:200px 0 0;" />
+        </div>
+        <div class="span6">
+          <h2>Result text</h2>
+          <textarea id="result" name="result" class="xlarge" rows="20"></textarea>
+        </div>
+      </div> 
+    </form>
+  </div>
+
+  <script src="http://code.jquery.com/jquery-1.6.2.min.js"></script> 
+  <script src="js/jquery.fillintheblanks.js"></script>
+  <script>
+    $(function(){
+      $('#frm-fill').fillintheblanks();
+    });
+  </script>
+
+</body>
+</html>
