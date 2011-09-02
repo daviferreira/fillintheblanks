@@ -7,10 +7,23 @@
       symbol: '_',
       size: 1,
       original: 'original',
-      result: 'result' 
+      result: 'result',
+      ignore: ['the', 'in', 'on', 'as'],
+      minimum_word_size: 2,
+      maximum_word_size: -1
     };
 
     var options = $.extend(defaults, options || {});
+
+    for(word in options.ignore)
+      options.ignore[word] = options.ignore[word].toLowerCase();
+
+    var in_array = function(needle, haystack){
+      for(key in haystack)
+        if(needle == haystack[key])
+          return true;
+      return false;
+    };
 
     var select_words = function(words){
       var words_to_convert = []; 
@@ -19,20 +32,13 @@
 
       while(words_to_convert.length < options.blanks_by_line && words_to_convert.length < words.length){
         word = Math.floor(Math.random()*(words.length));
-        if(!already_blanked(word, blanked_words)){
+        if(!in_array(word, blanked_words)){
           len = words[word].length * options.size;
           words_to_convert.push([word, len]);
           blanked_words.push(word);
         }
       }
       return words_to_convert;
-    };
-
-    var already_blanked = function(word, blanked_words){
-      for(x in blanked_words)
-        if(word == blanked_words[x])
-          return true;
-      return false;
     };
 
     var convert_words = function(words, words_to_convert){
@@ -69,7 +75,6 @@
         $(this).find('textarea[name="'+options.result+'"]').val(result);
         e.preventDefault();
       });
-
     });
 
   };

@@ -79,4 +79,25 @@ describe('Fill In The Blanks', function() {
     expect($('textarea[name="result"]').val()).toEqual('____!');
   });
 
+  it('Should ignore words on the ignore list', function(){
+    $('#frm-fill').unbind('submit');
+    $('textarea[name="original"]').val('Testing test\ntesting');
+    $('#frm-fill').fillintheblanks({ ignore: ['testing'] }).submit();
+    expect($('textarea[name="result"]').val()).toEqual('Testing ____\ntesting');
+  });
+
+  it('Should ignore numeric values', function(){
+    $('textarea[name="original"]').val('50.9 test\ntest 12');
+    $('#frm-fill').submit();
+    expect($('textarea[name="result"]').val()).toEqual('50.9 ____\n____ 12');
+  });
+
+  it('Should ignore words smaller than the specified minimum size', function(){
+  
+  });
+
+  it('Should ignore words bigger than the maximum size', function(){
+  
+  });
+
 });
