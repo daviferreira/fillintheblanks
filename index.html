@@ -94,15 +94,62 @@
       </div>
       <div class="span12 columns">
         <h3>Sample code</h3>
-        <p>The code below will create a fill in the blanks generator using the form "frm-fill". The symbol used for the blanks will be an empty space; the size will be 3 times the word length; and there will be 2 blanks by line.</p>
+        <p>The code below will create a fill in the blanks generator using the form "frm-fill". The symbol used for the blanks will be an empty space; the size will be 3 times the word length; and there will be 2 blanks by line. Finally, the words "the", "in", "on" and "as" will be ignored during the process.</p>
 <pre class="prettyprint linenums">$('#frm-fill').fillintheblanks({
   size: 3,
   symbol: ' ',
-  blanks_by_line: 2
+  blanks_by_line: 2,
+  ignore: ['the', 'in', 'on', 'as']
 });</pre> 
       </div>
     </div>
-    
+
+    <div class="page-header">
+      <h2>Full list of options</h2>
+    </div>
+    <table class="zebra-striped">
+      <thead>
+        <tr>
+          <th>Option</th>
+          <th>Default</th>
+          <th>Usage</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>size</td>
+          <td>1</td>
+          <td>Size of the blank mark. This option will be multiplied by the word length.</td>
+        </tr>
+        <tr>
+          <td>symbol</td>
+          <td>_</td>
+          <td>Defines the symbol to be used when a word is erased.</td>
+        </tr>
+        <tr>
+          <td>blanks_by_line</td>
+          <td>1</td>
+          <td>Number of words to be erased in a line.</td>
+        </tr>
+        <tr>
+          <td>min_size</td>
+          <td>0</td>
+          <td>Minimum size (in letters) of words to be erased.</td>
+        </tr>
+        <tr>
+          <td>max_size</td>
+          <td>0</td>
+          <td>Maximum size (in letters) of words to be erased (0 means unlimited).</td>
+        </tr>
+         <tr>
+          <td>ignore</td>
+          <td><em>empty</em></td>
+          <td>An array containing words that should be ignored when searching for words to erase.</td>
+        </tr>
+        
+      </tbody>
+    </table>
+  
     <hr />
     
     <p style="text-align:right;">Developed with &hearts; by <a href="http://www.daviferreira.com">Davi Ferreira</a> using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap</a> and, of course, <a href="http://jquery.com">jQuery</a>.</p>
