@@ -8,9 +8,9 @@
       size: 1,
       original: 'original',
       result: 'result',
-      ignore: ['the', 'in', 'on', 'as'],
+      ignore: [],
       min_size: 2,
-      max_size: -1
+      max_size: 0 
     };
 
     var options = $.extend(defaults, options || {});
@@ -25,17 +25,26 @@
       return false;
     };
 
+    var _is_valid_word = function(word){
+      return (!in_array(word.toLowerCase(), options.ignore) 
+              && word.length >= options.min_size 
+              && (options.max_size < 1 || word.length <= options.max_size)
+              && (isNaN(parseFloat(word))));
+    };
+
     var _select_words = function(words){
       var words_to_convert = []; 
-      var blanked_words = [];
+      var checked_words = [];
       var word, len;
 
-      while(words_to_convert.length < options.blanks_by_line && words_to_convert.length < words.length){
+      while(words_to_convert.length < options.blanks_by_line && checked_words.length < words.length){
         word = Math.floor(Math.random()*(words.length));
-        if(!in_array(word, blanked_words)){
-          len = words[word].length * options.size;
-          words_to_convert.push([word, len]);
-          blanked_words.push(word);
+        if(!in_array(word, checked_words)){
+          checked_words.push(word);
+          if(_is_valid_word(words[word])){
+            len = words[word].length * options.size;
+            words_to_convert.push([word, len]);
+          }
         }
       }
       return words_to_convert;

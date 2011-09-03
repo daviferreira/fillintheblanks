@@ -81,7 +81,7 @@ describe('Fill In The Blanks', function() {
 
   it('Should ignore words on the ignore list', function(){
     $('#frm-fill').unbind('submit');
-    $('textarea[name="original"]').val('Testing test\ntesting');
+    $('textarea[name="original"]').val('Testing test\ntesting'); 
     $('#frm-fill').fillintheblanks({ ignore: ['testing'] }).submit();
     expect($('textarea[name="result"]').val()).toEqual('Testing ____\ntesting');
   });
@@ -93,11 +93,18 @@ describe('Fill In The Blanks', function() {
   });
 
   it('Should ignore words smaller than the specified minimum size', function(){
-  
+    $('#frm-fill').unbind('submit').fillintheblanks({ min_size: 4 });
+    $('textarea[name="original"]').val('the max test'); 
+    $('#frm-fill').submit();
+    expect($('textarea[name="result"]').val()).toEqual('the max ____');
   });
 
   it('Should ignore words bigger than the maximum size', function(){
-  
+    $('#frm-fill').unbind('submit');
+    $('#frm-fill').fillintheblanks({ max_size: 3, blanks_by_line: 2 });
+    $('textarea[name="original"]').val('the max test'); 
+    $('#frm-fill').submit();
+    expect($('textarea[name="result"]').val()).toEqual('___ ___ test');
   });
 
 });
