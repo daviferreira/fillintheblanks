@@ -39,28 +39,51 @@
     <div class="page-header">
       <h2>Options <small>Use this form to change the plugin options on the fly.</small></h2>
     </div>
-    <div class="row">
-      <form class="options" action="index.html" method="post">
-        <div class="span4">
+    <form class="options" action="index.html" method="post">
+      <div class="row">
+        <div class="span4 columns">
           <label for="size">Size</label>
           <div class="input">
             <input type="text" id="size" class="small" value="1" />
           </div>
         </div>
-        <div class="span4">
+        <div class="span4 columns">
           <label for="blanks_by_line">Blanks by line</label>
           <div class="input">
             <input type="text" id="blanks_by_line" class="small" value="1" />
           </div>
         </div>
-        <div class="span4">
+        <div class="span4 columns">
           <label for="symbol">Symbol</label>
           <div class="input">
             <input type="text" id="symbol" class="small" value="_" />
           </div>
         </div>
-      </form>
-    </div>
+      </div>
+      <div class="row">
+        <div class="span4 columns">
+          <label for="min_size">Minimum size</label>
+          <div class="input">
+            <input type="text" id="min_size" class="small" value="2" />
+          </div>
+        </div>
+        <div class="span4 columns">
+          <label for="max_size">Maximum size</label>
+          <div class="input">
+            <input type="text" id="max_size" class="small" value="12" />
+          </div>
+        </div>
+        </div>
+        <div class="row">
+         <div class="span12 columns">
+          <label for="ignore">Ignore</label>
+          <div class="input">
+            <input type="text" id="ignore" class="large" value="the, as, in, on" />
+            <span class="help-block">Separated by commas</span>
+          </div>
+       </div>
+      </div>
+    </form>
 
     <hr />
 
@@ -107,8 +130,22 @@
       $('#frm-fill').fillintheblanks({
         size: $('#size').val(),
         symbol: $('#symbol').val(),
-        blanks_by_line: $('#blanks_by_line').val()
+        blanks_by_line: $('#blanks_by_line').val(),
+        min_size: $('#min_size').val(),
+        max_size: $('#max_size').val(),
+        ignore: get_ignored_words()
       });
+    }
+
+    function get_ignored_words(){
+      var ignore = [];
+      var words = $('#ignore').val().split(',');
+      var word = '';
+      for(i in words){
+        word = $.trim(words[i]);
+        if(word != "") ignore.push(word);
+      }
+      return ignore;
     }
   </script>
 
